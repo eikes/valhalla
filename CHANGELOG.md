@@ -1,4 +1,11 @@
 ## Release Date: 2023-??-?? Valhalla 3.4.1
+## UNRELEASED
+* **Removed**
+* **Bug Fix**
+* **Enhancement**
+* * CHANGED: voice instructions for OSRM serializer to work better in real-world environment [#4756](https://github.com/valhalla/valhalla/pull/4756)
+
+## Release Date: 2024-08-21 Valhalla 3.5.0
 * **Removed**
    * REMOVED: needs_ci_run script [#4423](https://github.com/valhalla/valhalla/pull/4423)
    * REMOVED: unused vehicle types in AutoCost and segway; renamed kTruck to "truck" instead of "tractor_trailer" [#4430](https://github.com/valhalla/valhalla/pull/4430)
