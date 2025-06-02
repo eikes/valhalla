@@ -41,6 +41,7 @@ public:
   std::string height(Api& request);
   std::string transit_available(Api& request);
   void status(Api& request) const;
+  std::string vector_tile(Api& request);
 
   void set_interrupt(const std::function<void()>* interrupt) override;
 
@@ -61,6 +62,7 @@ protected:
   void init_trace(Api& request);
   std::vector<midgard::PointLL> init_height(Api& request);
   void init_transit_available(Api& request);
+  void init_vector_tile(Api& request);
 
   boost::property_tree::ptree config;
   sif::CostFactory factory;

@@ -388,6 +388,7 @@ message Options {
     expansion = 10;
     centroid = 11;
     status = 12;
+    vector_tile = 13;
   }
 
   enum DateTimeType {

@@ -213,6 +213,18 @@ public:
                      const std::function<void()>* interrupt = nullptr,
                      Api* api = nullptr);
 
+  /**
+   * Perform the vector_tile action and return the vector tile.
+   * @param request_str  json string if json input is being used empty otherwise
+   * @param interrupt    allows the underlying computation to be aborted via the functor throwing
+   * @param api          protobuffer object which can contain the input request via the options object
+   *                     and will be filled out as the request is processed
+   * @return vector tile pbf bytes
+   */
+  std::string vector_tile(const std::string& request_str,
+                          const std::function<void()>* interrupt = nullptr,
+                          Api* api = nullptr);
+
 protected:
   struct pimpl_t;
   std::shared_ptr<pimpl_t> pimpl;

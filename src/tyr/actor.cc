@@ -80,6 +80,8 @@ std::string actor_t::act(Api& api, const std::function<void()>* interrupt) {
       return centroid("", interrupt, &api);
     case Options::status:
       return status("", interrupt, &api);
+    case Options::vector_tile:
+      return vector_tile("", interrupt, &api);
     default:
       throw valhalla_exception_t{106};
   }
@@ -363,6 +365,24 @@ actor_t::status(const std::string& request_str, const std::function<void()>* int
     cleanup();
   }
   return json;
+}
+
+std::string
+actor_t::vector_tile(const std::string& request_str, const std::function<void()>* interrupt, Api* api) {
+  // set the interrupts
+  pimpl->set_interrupts(interrupt);
+  Api dummy;
+  if (!api) {
+    api = &dummy;
+  }
+  // parse the request
+  ParseApi(request_str, Options::vector_tile, *api);
+  // call the worker
+  auto bytes = pimpl->loki_worker.vector_tile(*api);
+  if (auto_cleanup) {
+    cleanup();
+  }
+  return bytes;
 }
 
 } // namespace tyr
