@@ -704,6 +704,7 @@ void from_json(rapidjson::Document& doc, Options::Action action, Api& api) {
                                                           Options::status,
                                                           Options::sources_to_targets,
                                                           Options::isochrone,
+                                                          Options::vector_tile,
                                                           Options::expansion};
     // if its not a pbf supported action we reset to json
     if (pbf_actions.count(options.action()) == 0) {
@@ -1263,6 +1264,20 @@ void from_json(rapidjson::Document& doc, Options::Action action, Api& api) {
   doc.AddMember({"language", allocator}, {options.language(), allocator}, allocator);
   doc.AddMember({"format", allocator},
                 {valhalla::Options_Format_Enum_Name(options.format()), allocator}, allocator);
+
+  // Vector tile query parameters
+  auto x = rapidjson::get_optional<int32_t>(doc, "/x");
+  if (x) {
+    options.set_x(*x);
+  }
+  auto y = rapidjson::get_optional<int32_t>(doc, "/y");
+  if (y) {
+    options.set_y(*y);
+  }
+  auto z = rapidjson::get_optional<int32_t>(doc, "/z");
+  if (z) {
+    options.set_z(*z);
+  }
 }
 
 } // namespace

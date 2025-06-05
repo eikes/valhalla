@@ -102,6 +102,13 @@ std::string serializeTraceAttributes(
  */
 std::string serializeStatus(Api& request);
 
+/**
+ * Convert the vector tile request into a serialized vector tile
+ * @param request  the proto request with status info attached
+ * @return pbf or json string
+ */
+// std::string serializeVectorTile(Api& request);
+
 // Return a JSON array of OpenLR 1.5 line location references for each edge of a map matching
 // result. For the time being, result is only non-empty for auto costing requests.
 void route_references(baldr::json::MapPtr& route_json,

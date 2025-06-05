@@ -13,6 +13,7 @@ set(protobuf_descriptors
   status.proto
   matrix.proto
   isochrone.proto
+  vector_tile.proto
   expansion.proto)
 
 protobuf_generate_cpp(protobuf_srcs protobuf_hdrs ${protobuf_descriptors})

@@ -54,6 +54,7 @@ message PbfFieldSelector {
   bool matrix = 5;     // sources_to_targets
   bool isochrone = 6;
   bool expansion = 9;
+  bool vector_tile = 10;
   // TODO: enable these once we have objects for them
   // bool locate = 7;
   // bool height = 8;
@@ -527,4 +528,15 @@ message Options {
                                                                    // ensuring that each edge appears in the output only once. [default = false]
   bool admin_crossings = 59;                                       // Include administrative boundary crossings
   bool turn_lanes = 60;                                            // Include turn lane information into Valhalla serializer response.
+
+  // Vector tile query parameters
+  oneof has_x {
+    int32 x = 61;
+  }
+  oneof has_y {
+    int32 y = 62;
+  }
+  oneof has_z {
+    int32 z = 63;
+  }
 }

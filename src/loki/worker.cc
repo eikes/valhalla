@@ -426,6 +426,10 @@ loki_worker_t::work(const std::list<zmq::message_t>& job,
         result.messages.emplace_back(request.SerializeAsString());
         break;
       case Options::vector_tile:
+        vector_tile(request);
+        // std::cout << "loki_worker_t Options::vector_tile 1" << std::endl;
+        // result.messages.emplace_back(request.SerializeAsString());
+        // std::cout << "loki_worker_t Options::vector_tile 2 " << std::endl;
         result = to_response(vector_tile(request), info, request);
         break;
       default:
